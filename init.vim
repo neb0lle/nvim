@@ -74,6 +74,7 @@ set termguicolors
 "	LSP:
 lua require'lspconfig'.clangd.setup{}
 lua require'lspconfig'.pyright.setup{}
+let g:coq_settings = { 'auto_start': 'shut-up' }
 
 "   Lualine:
 lua << EOF
@@ -174,7 +175,6 @@ nnoremap Y y$
 nnoremap J mzJ`z
 nnoremap <leader><leader> <c-^>
 nmap <leader>gs :G<CR>
-nmap <F2> <Plug>(coc-rename)
 
 "	Quick Run:
 autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te /opt/homebrew/Cellar/gcc/11.2.0_1/bin/aarch64-apple-darwin20-g++-11 -std=c++14 -Wshadow -Wall -o %:t:r % && ./%:t:r<CR>i
