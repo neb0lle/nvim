@@ -75,6 +75,7 @@ set termguicolors
 lua require'lspconfig'.clangd.setup{}
 lua require'lspconfig'.pyright.setup{}
 let g:coq_settings = { 'auto_start': 'shut-up' }
+set completeopt=menuone,noinsert,noselect shm+=c
 
 "   Lualine:
 lua << EOF
@@ -97,7 +98,6 @@ require'lualine'.setup {
 		},
 	}
 EOF
-
 
 "	Treesetter:
 lua <<EOF
