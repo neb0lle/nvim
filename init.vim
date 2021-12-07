@@ -6,6 +6,9 @@ call plug#begin()
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Completion:
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+	Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+	Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 " Version Control:
 	Plug 'tpope/vim-fugitive'
 " Theme:
@@ -71,7 +74,6 @@ set termguicolors
 "	LSP:
 lua require'lspconfig'.clangd.setup{}
 lua require'lspconfig'.pyright.setup{}
-source $HOME/.config/nvim/cmp.vim
 
 "   Lualine:
 lua << EOF
