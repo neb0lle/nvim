@@ -80,7 +80,6 @@ set termguicolors
 
 " LSP:
 set completeopt=menu,menuone,noselect
-
 lua <<EOF
 local lsp = require 'lspconfig'
 local cmp = require'cmp'
