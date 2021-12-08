@@ -4,9 +4,10 @@ call plug#begin()
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" LSP:
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'onsails/lspkind-nvim'
 " Completion:
-	Plug 'neovim/nvim-lspconfig'
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'
@@ -83,6 +84,8 @@ set completeopt=menu,menuone,noselect
 lua <<EOF
 local lsp = require 'lspconfig'
 local cmp = require'cmp'
+local lspkind = require('lspkind')
+
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -92,47 +95,9 @@ local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
-local kind_icons = {
-  Text = "",
-  Method = "",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "ﴯ",
-  Interface = "",
-  Module = "",
-  Property = "ﰠ",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = ""
-}
-
 cmp.setup({
 	formatting = {
-		format = function(entry, vim_item)
-		vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-		vim_item.menu = ({
-			buffer = "[Buffer]",
-			nvim_lsp = "[LSP]",
-			luasnip = "[LuaSnip]",
-			nvim_lua = "[Lua]",
-			latex_symbols = "[LaTeX]",
-		})[entry.source.name]
-		return vim_item
-		end
+		format = lspkind.cmp_format(),
 	},
 	snippet = {
 		expand = function(args)
