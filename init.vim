@@ -4,11 +4,19 @@ call plug#begin()
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Completion:
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-	Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-	Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+" Completion:
+	" Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+	" Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+	" Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+	Plug 'hrsh7th/cmp-nvim-lsp'
+	Plug 'hrsh7th/cmp-buffer'
+	Plug 'hrsh7th/cmp-path'
+	Plug 'hrsh7th/cmp-cmdline'
+	Plug 'hrsh7th/nvim-cmp'
+" Snippets:
+	Plug 'L3MON4D3/LuaSnip'
+	Plug 'saadparwaiz1/cmp_luasnip'
 " Version Control:
 	Plug 'tpope/vim-fugitive'
 " Theme:
@@ -71,13 +79,70 @@ set noshowmode
 set termguicolors
 " set colorcolumn=80
 
-"	LSP:
-lua require'lspconfig'.clangd.setup{}
-lua require'lspconfig'.pyright.setup{}
-let g:coq_settings = { 'auto_start': 'shut-up' }
-set completeopt=menuone,noinsert,noselect shm+=c
+" LSP:
+" lua require'lspconfig'.clangd.setup{}
+" lua require'lspconfig'.pyright.setup{}
 
-"   Lualine:
+" Completion:
+" let g:coq_settings = { 'auto_start': 'shut-up' }
+set completeopt=menu,menuone,noselect
+lua <<EOF
+  -- Setup nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+		require('luasnip').lsp_expand(args.body)
+      end,
+    },
+	mapping = {
+		['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+		['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+		['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-e>'] = cmp.mapping.close(),
+		['<CR>'] = cmp.mapping.confirm({
+		behavior = cmp.ConfirmBehavior.Replace,
+		select = true,
+		})
+	},
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'luasnip' },
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Setup lspconfig.
+  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig')['clangd'].setup {
+    capabilities = capabilities
+  }
+EOF
+
+" Lualine:
 lua << EOF
 local sed_theme = require'lualine.themes.auto'
 sed_theme.normal.a.bg = "#2392FB"
@@ -99,7 +164,7 @@ require'lualine'.setup {
 	}
 EOF
 
-"	Treesetter:
+" Treesetter:
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
 	highlight = {
@@ -112,7 +177,7 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-"	Dashboard:
+" Dashboard:
 highlight dashboardHeader ctermfg=8 guifg=grey
 highlight dashboardCenter ctermfg=12 guifg=#2392FB
 let g:dashboard_default_executive ='fzf'
@@ -141,7 +206,7 @@ vim.g.dashboard_custom_section = {
 }
 EOF
 
-"	VimWiki:
+" VimWiki:
 let g:vimwiki_list = [
 	\{'path': '~/.wiki/',
 	\'syntax': 'markdown',
@@ -150,9 +215,9 @@ let g:vimwiki_list = [
 	\},]
 let g:vimwiki_markdown_link_ext = 1
 
-"	FZF:
-map <C-p> :Files<CR>
-map <C-n> :Buffers<CR>
+" FZF:
+" map <C-p> :Files<CR>
+" map <C-n> :Buffers<CR>
 let g:fzf_buffers_jump = 1
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -169,14 +234,14 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-"	Mappings:
+" Mappings:
 let mapleader=' '
 nnoremap Y y$
 nnoremap J mzJ`z
 nnoremap <leader><leader> <c-^>
 nmap <leader>gs :G<CR>
 
-"	Quick Run:
+" Quick Run:
 autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te /opt/homebrew/Cellar/gcc/11.2.0_1/bin/aarch64-apple-darwin20-g++-11 -std=c++14 -Wshadow -Wall -o %:t:r % && ./%:t:r<CR>i
 " autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te g++ -std=c++14 -Wshadow -Wall -o %:t:r % -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && ./%:t:r<CR>i
 autocmd filetype python nnoremap <buffer> <C-c> :split<CR>:te python3 '%'<CR>i
