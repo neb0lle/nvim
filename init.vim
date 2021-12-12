@@ -34,6 +34,7 @@ call plug#begin()
 call plug#end()
 
 "	General Settings:
+let mapleader=' '
 syntax on
 filetype plugin indent on
 set nocompatible
@@ -259,7 +260,6 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " MAPPINGS:
-let mapleader=' '
 nnoremap Y y$
 nnoremap J mzJ`z
 nnoremap <leader><leader> <c-^>
