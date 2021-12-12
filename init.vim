@@ -23,7 +23,6 @@ call plug#begin()
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'nvim-lualine/lualine.nvim'
-	Plug 'arcticicestudio/nord-vim'
 " FZF:
 	Plug 'nvim-telescope/telescope.nvim'
 " MISC:
