@@ -78,6 +78,7 @@ set termguicolors
 " highlight Normal guibg=None
 let g:tokyonight_style = "night"
 let g:tokyonight_transparent = 1
+let g:tokyonight_lualine_bold = 1
 colorscheme tokyonight
 
 " TREESITTER:
