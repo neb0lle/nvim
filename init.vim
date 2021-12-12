@@ -183,7 +183,7 @@ lsp.rust_analyzer.setup { capabilities = capabilities }
 EOF
 
 " LUALINE:
-lua << EOF
+lua <<EOF
 require'lualine'.setup {
 	options = {
 		icons_enabled = true,
@@ -237,10 +237,26 @@ let g:vimwiki_list = [
 let g:vimwiki_markdown_link_ext = 1
 
 " FZF:
-nnoremap <c-n> <cmd>Telescope buffers<cr>
-nnoremap <c-p> <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+lua <<EOF
+require('telescope').setup{
+	defaults = {
+		vimgrep_arguments = {
+			'rg',
+			'--color=never',
+			'--no-heading',
+			'--with-filename',
+			'--line-number',
+			'--column',
+			'--smart-case',
+			'-u' -- thats the new thing
+			},
+		}
+}
+EOF
+nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <c-n> <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " MAPPINGS:
 let mapleader=' '
