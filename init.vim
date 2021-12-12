@@ -27,9 +27,9 @@ call plug#begin()
 " VimWiki:
     Plug 'vimwiki/vimwiki'
 " FZF:
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
+	Plug 'nvim-telescope/telescope.nvim'
 " Misc:
+	Plug 'nvim-lua/plenary.nvim'
 	Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
@@ -162,6 +162,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 lsp.clangd.setup { capabilities = capabilities }
 lsp.pyright.setup { capabilities = capabilities }
 lsp.rust_analyzer.setup { capabilities = capabilities }
+
 EOF
 
 " Completion:
@@ -204,7 +205,7 @@ EOF
 " Dashboard:
 highlight dashboardHeader ctermfg=8 guifg=grey
 highlight dashboardCenter ctermfg=12 guifg=#2392FB
-let g:dashboard_default_executive ='fzf'
+let g:dashboard_default_executive ='telescope'
 let g:indentLine_fileTypeExclude = ['dashboard','txt']
 let g:dashboard_custom_header = [
     \'',
@@ -224,7 +225,7 @@ lua <<EOF
 vim.g.dashboard_footer_icon = ' '
 vim.g.dashboard_custom_section = {
     a = {description = {' New file'}, command = 'DashboardNewFile'},
-    b = {description = {' Browse files'}, command = 'Files'},
+    b = {description = {' Browse files'}, command = 'Telescope find_files'},
     c = {description = {' Settings'}, command = 'edit $HOME/.config/nvim/init.vim'},
     d = {description = {' Exit'}, command = 'exit'},
 }
@@ -240,23 +241,10 @@ let g:vimwiki_list = [
 let g:vimwiki_markdown_link_ext = 1
 
 " FZF:
-map <C-p> :Files<CR>
-map <C-n> :Buffers<CR>
-let g:fzf_buffers_jump = 1
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+nnoremap <c-p> <cmd>Telescope buffers<cr>
+nnoremap <c-n> <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Mappings:
 let mapleader=' '
