@@ -23,6 +23,7 @@ call plug#begin()
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'nvim-lualine/lualine.nvim'
+	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " FZF:
 	Plug 'nvim-telescope/telescope.nvim'
 " MISC:
@@ -33,7 +34,7 @@ call plug#begin()
 call plug#end()
 
 "	General Settings:
-syntax on
+syntax off
 filetype plugin indent on
 set nocompatible
 set number relativenumber
@@ -67,15 +68,32 @@ set softtabstop=4
 set scrolloff=8
 
 "	Theme:
-colorscheme sed
 set background=dark
-highlight Normal guibg=None
 set cmdheight=1
 set showtabline=0
 set laststatus=2
 set noshowmode
 set termguicolors
-" set colorcolumn=80
+" colorscheme sed
+" highlight Normal guibg=None
+let g:tokyonight_style = "night"
+let g:tokyonight_transparent = 1
+colorscheme tokyonight
+
+" TREESITTER:
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+	ensure_installed = "maintained",
+	sync_install = false,
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
+	indent = {
+		enable = true,
+	},
+}
+EOF
 
 " LSP:
 set completeopt=menu,menuone,noselect
@@ -161,22 +179,14 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 lsp.clangd.setup { capabilities = capabilities }
 lsp.pyright.setup { capabilities = capabilities }
 lsp.rust_analyzer.setup { capabilities = capabilities }
-
 EOF
 
-" Completion:
-
-" Lualine:
+" LUALINE:
 lua << EOF
-local sed_theme = require'lualine.themes.auto'
-sed_theme.normal.a.bg = "#2392FB"
-sed_theme.visual.a.bg = "#9966ff"
-sed_theme.replace.a.bg = "#ff5555"
-sed_theme.normal.a.fg = "#000000"
 require'lualine'.setup {
 	options = {
 		icons_enabled = true,
-		theme = sed_theme,
+		theme = 'tokyonight',
 		always_divide_middle = true,
 		section_separators = '',
 		component_separators = '',
@@ -188,24 +198,7 @@ require'lualine'.setup {
 	}
 EOF
 
-" Treesetter:
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-	ensure_installed = "maintained",
-	sync_install = false,
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false,
-	},
-	indent = {
-		enable = true,
-	},
-}
-EOF
-
-" Dashboard:
-highlight dashboardHeader ctermfg=8 guifg=grey
-highlight dashboardCenter ctermfg=12 guifg=#2392FB
+" DASHBOARD:
 let g:dashboard_default_executive ='telescope'
 let g:indentLine_fileTypeExclude = ['dashboard','txt']
 let g:dashboard_custom_header = [
@@ -232,7 +225,7 @@ vim.g.dashboard_custom_section = {
 }
 EOF
 
-" VimWiki:
+" VIMWIKI:
 let g:vimwiki_list = [
 	\{'path': '~/.wiki/',
 	\'syntax': 'markdown',
@@ -247,14 +240,14 @@ nnoremap <c-n> <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" Mappings:
+" MAPPINGS:
 let mapleader=' '
 nnoremap Y y$
 nnoremap J mzJ`z
 nnoremap <leader><leader> <c-^>
 nmap <leader>gs :G<CR>
 
-" Quick Run:
+" RUN:
 autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te /opt/homebrew/Cellar/gcc/11.2.0_1/bin/aarch64-apple-darwin20-g++-11 -std=c++14 -Wshadow -Wall -o %:t:r % && ./%:t:r<CR>i
 " autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te g++ -std=c++14 -Wshadow -Wall -o %:t:r % -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && ./%:t:r<CR>i
 autocmd filetype python nnoremap <buffer> <C-c> :split<CR>:te python3 '%'<CR>i
