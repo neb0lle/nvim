@@ -1,34 +1,34 @@
 call plug#begin()
-" Syntax:
+" SYNTAX:
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
+	Plug 'norcalli/nvim-colorizer.lua'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " LSP:
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'onsails/lspkind-nvim'
-" Completion:
+" COMPLETION:
 	Plug 'hrsh7th/cmp-nvim-lsp'
 	Plug 'hrsh7th/cmp-buffer'
 	Plug 'hrsh7th/cmp-path'
 	Plug 'hrsh7th/cmp-cmdline'
 	Plug 'hrsh7th/nvim-cmp'
-" Snippets:
+" SNIPPETS:
 	Plug 'hrsh7th/cmp-vsnip'
 	Plug 'hrsh7th/vim-vsnip'
-" Version Control:
+" GIT:
 	Plug 'tpope/vim-fugitive'
-" Theme:
+" THEME:
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'nvim-lualine/lualine.nvim'
-	Plug 'norcalli/nvim-colorizer.lua'
-	Plug 'glepnir/dashboard-nvim'
-" VimWiki:
-    Plug 'vimwiki/vimwiki'
+	Plug 'arcticicestudio/nord-vim'
 " FZF:
 	Plug 'nvim-telescope/telescope.nvim'
-" Misc:
+" MISC:
+    Plug 'vimwiki/vimwiki'
+	Plug 'glepnir/dashboard-nvim'
 	Plug 'nvim-lua/plenary.nvim'
 	Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
