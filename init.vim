@@ -237,8 +237,8 @@ let g:vimwiki_list = [
 let g:vimwiki_markdown_link_ext = 1
 
 " FZF:
-nnoremap <c-p> <cmd>Telescope buffers<cr>
-nnoremap <c-n> <cmd>Telescope find_files<cr>
+nnoremap <c-n> <cmd>Telescope buffers<cr>
+nnoremap <c-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
