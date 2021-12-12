@@ -34,7 +34,7 @@ call plug#begin()
 call plug#end()
 
 "	General Settings:
-syntax off
+syntax on
 filetype plugin indent on
 set nocompatible
 set number relativenumber
@@ -199,6 +199,7 @@ require'lualine'.setup {
 EOF
 
 " DASHBOARD:
+highlight dashboardFooter ctermfg=20 guifg=#01fDB0
 let g:dashboard_default_executive ='telescope'
 let g:indentLine_fileTypeExclude = ['dashboard','txt']
 let g:dashboard_custom_header = [
