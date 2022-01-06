@@ -75,8 +75,6 @@ set showtabline=0
 set laststatus=2
 set noshowmode
 set termguicolors
-" colorscheme sed
-" highlight Normal guibg=None
 let g:tokyonight_style = "night"
 let g:tokyonight_transparent = 1
 let g:tokyonight_lualine_bold = 1
@@ -266,6 +264,6 @@ nnoremap <leader><leader> <c-^>
 nmap <leader>gs :G<CR>
 
 " RUN:
-" autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te /opt/homebrew/Cellar/gcc/11.2.0_1/bin/aarch64-apple-darwin20-g++-11 -std=c++14 -Wshadow -Wall -o %:t:r % && ./%:t:r<CR>i
-autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te g++ -std=c++14 -Wshadow -Wall -o %:t:r % -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && ./%:t:r<CR>i
+autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te /opt/homebrew/Cellar/gcc/11.2.0_1/bin/aarch64-apple-darwin20-g++-11 -std=c++14 -Wshadow -Wall -o %:t:r % && ./%:t:r<CR>i
+" autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te g++ -std=c++14 -Wshadow -Wall -o %:t:r % -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && ./%:t:r<CR>i
 autocmd filetype python nnoremap <buffer> <C-c> :split<CR>:te python3 '%'<CR>i
