@@ -255,7 +255,7 @@ EOF
 nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <c-n> <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>fh :Telescope<cr>
 
 " MAPPINGS:
 nnoremap Y y$
