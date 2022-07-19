@@ -37,44 +37,8 @@ call plug#end()
 let mapleader=' '
 syntax on
 filetype plugin indent on
-set nocompatible
-set number relativenumber
-set nohlsearch
-set hidden
-set noerrorbells
-set nowrap
-set smartcase
-set ignorecase
-set incsearch
-
-set noswapfile
-set nobackup
-set undofile
-set clipboard=unnamedplus
-
-set splitbelow
-set splitright
-set autowrite
-set noendofline
-set nofixendofline
-set autoread
-
-set smartindent
-set autoindent
-set smarttab
-set noexpandtab
-set tabstop=4 
-set shiftwidth=4
-set softtabstop=4
-set scrolloff=8
 
 "	Theme:
-set background=dark
-set cmdheight=1
-set showtabline=0
-set laststatus=2
-set noshowmode
-set termguicolors
 let g:tokyonight_style = "night"
 let g:tokyonight_transparent = 1
 let g:tokyonight_lualine_bold = 1
@@ -96,7 +60,6 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " LSP:
-set completeopt=menu,menuone,noselect
 lua <<EOF
 local lsp = require 'lspconfig'
 local cmp = require'cmp'
@@ -256,14 +219,3 @@ nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <c-n> <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fh :Telescope<cr>
-
-" MAPPINGS:
-nnoremap Y y$
-nnoremap J mzJ`z
-nnoremap <leader><leader> <c-^>
-nmap <leader>gs :G<CR>
-
-" RUN:
-autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te /opt/homebrew/Cellar/gcc/11.2.0_1/bin/aarch64-apple-darwin20-g++-11 -std=c++14 -Wshadow -Wall -o %:t:r % && ./%:t:r<CR>i
-" autocmd filetype cpp nnoremap <buffer> <C-c> :split<CR>:te g++ -std=c++14 -Wshadow -Wall -o %:t:r % -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG && ./%:t:r<CR>i
-autocmd filetype python nnoremap <buffer> <C-c> :split<CR>:te python3 '%'<CR>i
