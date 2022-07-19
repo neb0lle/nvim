@@ -1,3 +1,4 @@
+require("modules.pack")
 require("modules.lualine")
 require("modules.comment")
 require("modules.colorizer")
