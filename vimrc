@@ -13,7 +13,6 @@ call plug#begin()
 " SNIPPETS:
 	Plug 'hrsh7th/cmp-vsnip'
 	Plug 'hrsh7th/vim-vsnip'
-	Plug 'glepnir/dashboard-nvim'
 call plug#end()
 
 "	General Settings:
