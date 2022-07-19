@@ -1,9 +1,5 @@
 call plug#begin()
 " SYNTAX:
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'tpope/vim-surround'
-	Plug 'tpope/vim-commentary'
-	Plug 'norcalli/nvim-colorizer.lua'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " LSP:
 	Plug 'neovim/nvim-lspconfig'
@@ -17,32 +13,13 @@ call plug#begin()
 " SNIPPETS:
 	Plug 'hrsh7th/cmp-vsnip'
 	Plug 'hrsh7th/vim-vsnip'
-" GIT:
-	Plug 'tpope/vim-fugitive'
-" THEME:
-	Plug 'lukas-reineke/indent-blankline.nvim'
-	Plug 'kyazdani42/nvim-web-devicons'
-	Plug 'nvim-lualine/lualine.nvim'
-	Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-" FZF:
-	Plug 'nvim-telescope/telescope.nvim'
-" MISC:
-    Plug 'vimwiki/vimwiki'
 	Plug 'glepnir/dashboard-nvim'
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 "	General Settings:
-let mapleader=' '
 syntax on
 filetype plugin indent on
 
-"	Theme:
-let g:tokyonight_style = "night"
-let g:tokyonight_transparent = 1
-let g:tokyonight_lualine_bold = 1
-colorscheme tokyonight
 
 " TREESITTER:
 lua <<EOF
@@ -143,79 +120,3 @@ lsp.clangd.setup { capabilities = capabilities }
 lsp.pyright.setup { capabilities = capabilities }
 lsp.rust_analyzer.setup { capabilities = capabilities }
 EOF
-
-" LUALINE:
-lua <<EOF
-require'lualine'.setup {
-	options = {
-		icons_enabled = true,
-		theme = 'tokyonight',
-		always_divide_middle = true,
-		section_separators = '',
-		component_separators = '',
-		},
-	extensions = {
-		'fugitive',
-		'fzf',
-		},
-	}
-EOF
-
-" DASHBOARD:
-highlight dashboardFooter ctermfg=20 guifg=#01fDB0
-let g:dashboard_default_executive ='telescope'
-let g:indentLine_fileTypeExclude = ['dashboard','txt']
-let g:dashboard_custom_header = [
-    \'',
-    \'   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣭⣿⣶⣿⣦⣼⣆         ',
-    \'    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ',
-    \'          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷⠄⠄⠄⠄⠻⠿⢿⣿⣧⣄     ',
-    \'           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ',
-    \'          ⢠⣿⣿⣿⠈  ⠡⠌⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ',
-    \'   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘⠄ ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ',
-    \'  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ',
-    \' ⣠⣿⠿⠛⠄⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ',
-    \' ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇⠄⠛⠻⢷⣄ ',
-    \'      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ',
-    \'       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
-    \'',]
-lua <<EOF
-vim.g.dashboard_footer_icon = ' '
-vim.g.dashboard_custom_section = {
-    a = {description = {' New file'}, command = 'DashboardNewFile'},
-    b = {description = {' Browse files'}, command = 'Telescope find_files'},
-    c = {description = {' Settings'}, command = 'edit $HOME/.config/nvim/init.vim'},
-    d = {description = {' Exit'}, command = 'exit'},
-}
-EOF
-
-" VIMWIKI:
-let g:vimwiki_list = [
-	\{'path': '~/.wiki/',
-	\'syntax': 'markdown',
-	\'ext': '.md',
-	\'index': 'README',
-	\},]
-let g:vimwiki_markdown_link_ext = 1
-
-" FZF:
-lua <<EOF
-require('telescope').setup{
-	defaults = {
-		vimgrep_arguments = {
-			'rg',
-			'--color=never',
-			'--no-heading',
-			'--with-filename',
-			'--line-number',
-			'--column',
-			'--smart-case',
-			'-u' -- thats the new thing
-			},
-		}
-}
-EOF
-nnoremap <c-p> <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <c-n> <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fh :Telescope<cr>
