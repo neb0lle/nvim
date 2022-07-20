@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
 	use 'lukas-reineke/indent-blankline.nvim'
 	use 'christoomey/vim-tmux-navigator'
 	use 'glepnir/dashboard-nvim'
+	use 'nvim-treesitter/nvim-treesitter'
 
 	use 'neovim/nvim-lspconfig'
     use "williamboman/nvim-lsp-installer"
@@ -42,7 +43,7 @@ return require('packer').startup(function(use)
 	use 'onsails/lspkind-nvim'
 	use 'hrsh7th/nvim-cmp'
 	use 'hrsh7th/vim-vsnip'
-	use "rafamadriz/friendly-snippets"
+	use 'rafamadriz/friendly-snippets'
 
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-vsnip'
