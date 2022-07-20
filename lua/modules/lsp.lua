@@ -36,6 +36,18 @@ local lsp_flags = {
 	-- This is the default in Nvim 0.7+
 	debounce_text_changes = 150,
 }
+
+local lsp = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+lsp.pyright.setup { 
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+}
+
+-- lsp.rust_analyzer.setup { capabilities = capabilities }
+-- lsp.clangd.setup { capabilities = capabilities }
+--
 -- require('lspconfig')['tsserver'].setup{
 -- 	on_attach = on_attach,
 -- 	flags = lsp_flags,
@@ -48,13 +60,3 @@ local lsp_flags = {
 -- 		["rust-analyzer"] = {}
 -- 	}
 -- }
-
-local lsp = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- lsp.clangd.setup { capabilities = capabilities }
-lsp.pyright.setup { 
-	on_attach = on_attach,
-	flags = lsp_flags,
-	capabilities = capabilities,
-}
--- lsp.rust_analyzer.setup { capabilities = capabilities }
