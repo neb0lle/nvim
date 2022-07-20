@@ -35,7 +35,9 @@ return require('packer').startup(function(use)
 	use 'lukas-reineke/indent-blankline.nvim'
 	use 'christoomey/vim-tmux-navigator'
 	use 'glepnir/dashboard-nvim'
+
 	use 'nvim-treesitter/nvim-treesitter'
+	use 'jose-elias-alvarez/null-ls.nvim'
 
 	use 'neovim/nvim-lspconfig'
     use "williamboman/nvim-lsp-installer"
