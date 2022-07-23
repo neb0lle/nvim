@@ -12,6 +12,11 @@ local on_attach = function(client, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+	-- Disable asking for which ls to use
+	client.resolved_capabilities.document_formatting = false
+    -- client.server_capabilities.documentFormattingProvider = false	   -- new 0.8 nvim
+    -- client.server_capabilities.documentRangeFormattingProvider = false  -- "
+
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -46,23 +51,11 @@ lsp.pyright.setup {
 	capabilities = capabilities,
 }
 
-lsp.ccls.setup{
+lsp.clangd.setup{
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
-	init_options = {
-		compilationDatabaseDirectory = "build";
-		index = {
-			threads = 0;
-		};
-		clang = {
-			excludeArgs = { "-frounding-math"} ;
-		};
-	}
 }
-
--- lsp.rust_analyzer.setup { capabilities = capabilities }
--- lsp.clangd.setup { capabilities = capabilities }
 --
 -- require('lspconfig')['tsserver'].setup{
 -- 	on_attach = on_attach,

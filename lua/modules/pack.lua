@@ -40,7 +40,6 @@ return require('packer').startup(function(use)
 	use 'jose-elias-alvarez/null-ls.nvim'
 
 	use 'neovim/nvim-lspconfig'
-    -- use "williamboman/nvim-lsp-installer"
 
 	use 'onsails/lspkind-nvim'
 	use 'hrsh7th/nvim-cmp'
