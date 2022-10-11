@@ -1,4 +1,7 @@
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_transparent = 1
-vim.g.tokyonight_lualine_bold = 1
+require("tokyonight").setup({
+  style = "storm",
+  transparent = true,
+  terminal_colors = true,
+  lualine_bold = false,
+})
 vim.cmd[[colorscheme tokyonight]]
