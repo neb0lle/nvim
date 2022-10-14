@@ -8,7 +8,7 @@ db.custom_center = {
 
 db.preview_command = 'cat | lolcat -F .25 -p 50 -S 696969'
 local home = os.getenv('HOME')
-db.preview_file_path = home .. '/.config/nvim/lua/modules/catfile.cat'
+db.preview_file_path = home .. '/.config/nvim/lua/modules/preview_file.cat'
 db.preview_file_height = 14
 db.preview_file_width= 59
 
