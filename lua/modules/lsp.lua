@@ -13,8 +13,8 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	-- Disable asking for which ls to use
-	client.resolved_capabilities.document_formatting = false
-    -- client.server_capabilities.documentFormattingProvider = false	   -- new 0.8 nvim
+	-- client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false	   -- new 0.8 nvim
     -- client.server_capabilities.documentRangeFormattingProvider = false  -- "
 
 	-- Mappings.
