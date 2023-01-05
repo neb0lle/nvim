@@ -5,7 +5,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	debug = false,
 	sources = {
-		formatting.black,
+		-- formatting.black,
 		formatting.astyle,
 	},
 	on_attach = function(client, bufnr)
