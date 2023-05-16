@@ -1,4 +1,5 @@
 require("modules.pack")
+require("modules.colorscheme")
 require("modules.cmp")
 require("modules.lsp")
 require("modules.telescope")

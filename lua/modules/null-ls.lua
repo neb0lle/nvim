@@ -7,6 +7,7 @@ null_ls.setup({
 	sources = {
 		formatting.black,
 		formatting.astyle,
+		formatting.dart_format,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
