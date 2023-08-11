@@ -5,9 +5,10 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	debug = false,
 	sources = {
-		formatting.black,
 		formatting.astyle,
 		formatting.dart_format,
+		formatting.prettier,
+		formatting.black,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

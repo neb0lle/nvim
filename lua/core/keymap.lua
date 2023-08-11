@@ -10,6 +10,8 @@ keymap("n","<Y>","y$",opts)
 keymap("n","<J>","mzJ`z",opts)
 keymap("n","<leader><leader>","<c-^>",opts)
 keymap("n","<leader>gs",":G<CR>",opts)
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- telescope
 keymap("n","<C-p>","<cmd>Telescope find_files<CR>",opts)
