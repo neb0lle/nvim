@@ -15,7 +15,6 @@ local on_attach = function(client, bufnr)
 	-- Disable asking for which ls to use
 	-- client.resolved_capabilities.document_formatting = false
     client.server_capabilities.documentFormattingProvider = false	   -- new 0.8 nvim
-    -- client.server_capabilities.documentRangeFormattingProvider = false  -- "
 
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions

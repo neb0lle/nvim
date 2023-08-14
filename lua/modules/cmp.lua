@@ -23,8 +23,8 @@ cmp.setup({
 		end,
 	},
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
 	mapping = {
 		["<Tab>"] = cmp.mapping(function(fallback)
@@ -64,16 +64,17 @@ cmp.setup({
 	}),
 	experimental = {
 		ghost_text = true;
-		native_menu =false;
+		native_menu = false;
 	},
 })
 
 require'cmp'.setup.cmdline(':', {
 	sources = {
+		{ name = 'path' },
 		{ name = 'cmdline' }
 	}
 })
-require'cmp'.setup.cmdline('/', {
+require'cmp'.setup.cmdline({'/','?'}, {
 	sources = {
 		{ name = 'buffer' }
 	}
