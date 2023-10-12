@@ -16,6 +16,11 @@ rundi.setup({
       compiler_args = "-Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG",
       output_format = "%:t:r",
     },
+	rust = {
+		compiler = "rustc",
+		compiler_args = "",
+		output_format = "%:t:r",
+	},
   },
   silent = true,
   keymap = "<C-c>",
