@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
 	use 'hrsh7th/cmp-cmdline'
 
 
-	use '~/nvl/rundi.nvim'
+	use 'acmpesuecc/rundi.nvim'
 
 	if packer_bootstrap then
 		require('packer').sync()
