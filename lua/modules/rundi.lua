@@ -4,7 +4,6 @@ rundi.setup({
   autocompile = {
     python = {
       compiler = "python3",
-	  compiler_args = "-i"
     },
     cpp = {
       compiler = "g++",
