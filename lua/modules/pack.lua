@@ -31,7 +31,9 @@ return require('packer').startup(function(use)
 	use 'norcalli/nvim-colorizer.lua'
 	use 'tpope/vim-fugitive'
 	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { 'nvim-lua/plenary.nvim' } }
-	use { 'epwalsh/obsidian.nvim', tag = "*", requires = { "nvim-lua/plenary.nvim" } }
+	-- use { 'epwalsh/obsidian.nvim', tag = "*", requires = { "nvim-lua/plenary.nvim" } }
+	use 'jakewvincent/mkdnflow.nvim' 
+	use 'dfendr/clipboard-image.nvim'
 	use 'lukas-reineke/indent-blankline.nvim'
 	use 'christoomey/vim-tmux-navigator'
 	use 'goolord/alpha-nvim'

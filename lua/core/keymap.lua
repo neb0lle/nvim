@@ -18,3 +18,6 @@ keymap("n","<C-p>","<cmd>Telescope find_files<CR>",opts)
 keymap("n","<C-n>","<cmd>Telescope buffers<CR>",opts)
 keymap("n","<leader>fg","<cmd>Telescope live_grep<CR>",opts)
 keymap("n","<leader>fh","<cmd>Telescope<CR>",opts)
+
+-- mkdnflow
+autocmd("Filetype",{pattern= "markdown",command = "set awa"})
