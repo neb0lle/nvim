@@ -61,6 +61,7 @@ cmp.setup({
 		{ name = 'vsnip' },
 		{ name = 'buffer' },
 		{ name = 'path' },
+		{ name = 'mkdnflow' }, 
 	}),
 	experimental = {
 		ghost_text = true;

@@ -1,5 +1,5 @@
 require("tokyonight").setup({
-  style = "storm",
+  style = "night",
   transparent = true,
   terminal_colors = true,
   lualine_bold = false,

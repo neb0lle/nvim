@@ -30,8 +30,7 @@ return require('packer').startup(function(use)
 	use 'numToStr/Comment.nvim'
 	use 'norcalli/nvim-colorizer.lua'
 	use 'tpope/vim-fugitive'
-	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { 'nvim-lua/plenary.nvim' } }
-	-- use { 'epwalsh/obsidian.nvim', tag = "*", requires = { "nvim-lua/plenary.nvim" } }
+	use { 'nvim-telescope/telescope.nvim', tag = '0.1.5', requires = { 'nvim-lua/plenary.nvim' } }
 	use 'jakewvincent/mkdnflow.nvim' 
 	use 'dfendr/clipboard-image.nvim'
 	use 'lukas-reineke/indent-blankline.nvim'
