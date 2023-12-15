@@ -58,13 +58,11 @@ lsp.clangd.setup{
 lsp.tsserver.setup{
 	on_attach = on_attach,
 	flags = lsp_flags,
+	capabilities = capabilities,
 }
 
--- require('lspconfig')['rust_analyzer'].setup{
--- 	on_attach = on_attach,
--- 	flags = lsp_flags,
--- 	-- Server-specific settings...
--- 	settings = {
--- 		["rust-analyzer"] = {}
--- 	}
--- }
+lsp.rust_analyzer.setup{
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+}
