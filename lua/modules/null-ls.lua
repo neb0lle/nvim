@@ -11,6 +11,7 @@ null_ls.setup({
 		formatting.dart_format,
 		formatting.prettier,
 		formatting.black,
+		formatting.rustfmt,
 
 		-- linting/diagnostics TODO
 
