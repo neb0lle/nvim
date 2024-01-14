@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -21,11 +21,11 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope.nvim", tag = "0.1.5", dependencies = { "nvim-lua/plenary.nvim" } },
 
 	-- notes TODO
-	"jakewvincent/mkdnflow.nvim" ,
+	"jakewvincent/mkdnflow.nvim",
 	"dfendr/clipboard-image.nvim",
 
 	-- tmux
-    "aserowy/tmux.nvim",
+	"aserowy/tmux.nvim",
 
 	-- git
 	"tpope/vim-fugitive",
@@ -54,7 +54,7 @@ require("lazy").setup({
 	"mfussenegger/nvim-lint",
 
 	-- dap
-	{ "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} }
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 
 	-- completion
 	"hrsh7th/nvim-cmp",
@@ -62,7 +62,7 @@ require("lazy").setup({
 	"saadparwaiz1/cmp_luasnip",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
-	"carriga/cmp-dap",
+	"rcarriga/cmp-dap",
 	"hrsh7th/cmp-cmdline",
 	"hrsh7th/cmp-emoji",
 	"max397574/cmp-greek",
