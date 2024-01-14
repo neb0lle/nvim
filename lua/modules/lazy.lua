@@ -33,7 +33,8 @@ require("lazy").setup({
 
 	-- ui
 	"goolord/alpha-nvim",
-	"rcarriga/nvim-notify",
+	"MunifTanjim/nui.nvim",
+	{ "folke/noice.nvim", event = "VeryLazy", opts = {} },
 
 	-- syntax
 	"nvim-treesitter/nvim-treesitter",

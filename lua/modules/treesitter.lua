@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
 		disable = function(lang, buf)
@@ -12,7 +12,6 @@ require'nvim-treesitter.configs'.setup {
 	},
 	auto_install = true,
 	indent = { enable = true },
-	autopairs = { enable = true },
 	ensure_installed = {
 		"json",
 		"javascript",
@@ -48,10 +47,10 @@ require'nvim-treesitter.configs'.setup {
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "<C-space>",
-			node_incremental = "<C-space>",
-			scope_incremental = false,
-			node_decremental = "<bs>",
+			init_selection = "gnn",
+			node_incremental = "gnn",
+			scope_incremental = "gsn",
+			node_decremental = "<BS>",
 		},
 	},
-}
+})

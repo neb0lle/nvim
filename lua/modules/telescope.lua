@@ -16,9 +16,10 @@ telescope.setup({
 	},
 })
 
+telescope.load_extension("noice")
+
 vim.keymap.set("n", "<C-n>", builtin.buffers, {})
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 vim.keymap.set("n", "<leader>fj", ":Telescope<CR>", {})
+vim.keymap.set("n", "<leader>fh", builtin.commands, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-
