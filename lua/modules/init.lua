@@ -14,7 +14,6 @@ require("modules.rundi")
 require("modules.mkdnflow")
 require("modules.clip")
 
-
 -- convert all of em into opts
 require("Comment").setup({})
 require("nvim-surround").setup({})
