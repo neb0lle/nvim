@@ -42,7 +42,7 @@ require("lazy").setup({
 
 	-- color
 	"NvChad/nvim-colorizer.lua",
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "olivercederborg/poimandres.nvim", lazy = false, priority = 1000 },
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
 	-- lsp

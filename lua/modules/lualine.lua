@@ -1,14 +1,13 @@
-
-require'lualine'.setup {
+require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = 'auto',
+		theme = "poimandres",
 		always_divide_middle = true,
-		section_separators = '',
-		component_separators = '',
+		section_separators = "",
+		component_separators = "",
 	},
 	extensions = { -- TODO
-		'fugitive',
-		'fzf',
+		"fugitive",
+		"fzf",
 	},
-}
+})
