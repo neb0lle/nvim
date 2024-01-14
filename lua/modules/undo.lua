@@ -1,4 +1,6 @@
 vim.cmd([[
+	let g:undotree_WindowLayout = 3
+
 	if has("persistent_undo")
 	   let target_path = expand('~/.undodir')
 
