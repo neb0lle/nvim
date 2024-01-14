@@ -16,6 +16,7 @@ require("lazy").setup({
 	-- editor
 	"numToStr/Comment.nvim",
 	"lukas-reineke/indent-blankline.nvim",
+	"mbbill/undotree",
 	{ "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
 	{ "kylechui/nvim-surround", version = "*", event = "VeryLazy" },
 	{ "nvim-telescope/telescope.nvim", tag = "0.1.5", dependencies = { "nvim-lua/plenary.nvim" } },
