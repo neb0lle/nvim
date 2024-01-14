@@ -15,6 +15,3 @@ keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 
 -- mkdnflow
 autocmd("Filetype", { pattern = "markdown", command = "set awa" })
-
--- undo
-vim.keymap.set("n", "<leader>tu", vim.cmd.UndotreeToggle)
