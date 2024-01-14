@@ -1,12 +1,13 @@
+
 require'lualine'.setup {
 	options = {
 		icons_enabled = true,
-		theme = 'tokyonight',
+		theme = 'auto',
 		always_divide_middle = true,
 		section_separators = '',
 		component_separators = '',
 	},
-	extensions = {
+	extensions = { -- TODO
 		'fugitive',
 		'fzf',
 	},

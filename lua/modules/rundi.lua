@@ -20,6 +20,9 @@ rundi.setup({
 		compiler_args = "",
 		output_format = "%:t:r",
 	},
+	javascript = {
+		compiler = "node",
+	},
   },
   silent = true,
   keymap = "<C-c>",
