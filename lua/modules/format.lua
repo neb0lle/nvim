@@ -15,7 +15,6 @@ require("conform").setup({
 		json = { "prettier" },
 		yaml = { "prettier" },
 		-- markdown = { "prettier" }, TODO obsidian
-
 		html = { "prettier" },
 		css = { "prettier" },
 
@@ -51,13 +50,13 @@ vim.api.nvim_create_user_command("FormatDisable", function(args)
 		vim.g.disable_autoformat = true
 	end
 end, {
-desc = "Disable autoformat-on-save",
-bang = true,
+	desc = "Disable autoformat-on-save",
+	bang = true,
 })
 
 vim.api.nvim_create_user_command("FormatEnable", function()
 	vim.b.disable_autoformat = false
 	vim.g.disable_autoformat = false
 end, {
-desc = "Enable autoformat-on-save",
+	desc = "Enable autoformat-on-save",
 })
