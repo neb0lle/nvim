@@ -28,6 +28,9 @@ require("lazy").setup({
 	-- tmux
 	"aserowy/tmux.nvim",
 
+	-- fm
+	{ "stevearc/oil.nvim", opts = {}, dependencies = { "nvim-tree/nvim-web-devicons" } },
+
 	-- git
 	"tpope/vim-fugitive",
 	"lewis6991/gitsigns.nvim", -- TODO

@@ -14,6 +14,7 @@ require("modules.rundi")
 require("modules.mkdnflow")
 require("modules.clip")
 require("modules.undo")
+require("modules.oil")
 
 -- convert all of em into opts
 require("Comment").setup({})
