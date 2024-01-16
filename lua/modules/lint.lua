@@ -1,11 +1,10 @@
 require("lint").linters_by_ft = {
-	lua = { "selene" },
 	-- rust = { "clippy" }, TODO not in nvim-lint docs
 	go = { "golangcilint" },
 	python = { "ruff" },
 	sh = { "shellcheck" },
 
-	c = { "clangtidy" },
+	-- c = { "clangtidy" },
 	cpp = { "clangtidy" },
 
 	javascript = { "eslint_d" },
