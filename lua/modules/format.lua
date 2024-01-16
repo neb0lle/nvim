@@ -21,6 +21,14 @@ require("conform").setup({
 		["*"] = { "codespell" },
 		["_"] = { "trim_whitespace", "trim_newlines" },
 	},
+	formatters = {
+		prettier = {
+			prepend_args = { "--tab-width", "4", "--use-tabs" },
+		},
+		clang_format = {
+			prepend_args = { "-style", "{BasedOnStyle: LLVM, IndentWidth: 4}" },
+		},
+	},
 	format_on_save = function(bufnr)
 		-- Disable with a global or buffer-local variable
 		if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
