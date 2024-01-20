@@ -5,7 +5,7 @@ require("lint").linters_by_ft = {
 	sh = { "shellcheck" },
 
 	-- c = { "clangtidy" },
-	cpp = { "clangtidy" },
+	-- cpp = { "clangtidy" },
 
 	javascript = { "eslint_d" },
 	typescript = { "eslint_d" },

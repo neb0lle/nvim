@@ -39,3 +39,21 @@ local options = {
 for i, j in pairs(options) do
 	vim.opt[i] = j
 end
+
+-- vim.cmd([[
+-- let g:clipboard = {
+--       \   'name': 'pb',
+--       \   'copy': {
+--       \      '+': ['pbcopy'],
+--       \      '*': ['pbcopy'],
+--       \    },
+--       \   'paste': {
+--       \      '+': ['pbpaste'],
+--       \      '*': ['pbpaste'],
+--       \   },
+--       \   'cache_enabled': 1,
+--       \ }
+--
+--
+-- ]])
+--
