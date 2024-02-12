@@ -7,12 +7,12 @@ require("lint").linters_by_ft = {
 	-- c = { "clangtidy" },
 	-- cpp = { "clangtidy" },
 
-	javascript = { "eslint_d" },
-	typescript = { "eslint_d" },
+	-- javascript = { "eslint_d" },
+	-- typescript = { "eslint_d" },
 
 	json = { "jsonlint" },
 	yaml = { "yamllint" },
-	markdown = { "vale" },
+	-- markdown = { "vale" },
 	html = { "vale" },
 }
 

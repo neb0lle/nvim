@@ -46,7 +46,7 @@ require("lazy").setup({
 
 	-- color
 	"NvChad/nvim-colorizer.lua",
-	{ "olivercederborg/poimandres.nvim", lazy = false, priority = 1000 },
+	{ "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
 	{ "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
 	-- lsp
