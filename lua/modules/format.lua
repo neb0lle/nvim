@@ -8,8 +8,9 @@ require("conform").setup({
 
 		c = { "clang_format" },
 		cpp = { "clang_format" },
+		cs = { "clang_format" },
 
-		javascript = { "prettier" },
+		-- javascript = { "prettier" },
 		typescript = { "prettier" },
 		javascriptreact = { "prettier" },
 		typescriptreact = { "prettier" },
@@ -19,6 +20,7 @@ require("conform").setup({
 		-- markdown = { "prettier" }, TODO obsidian
 		html = { "prettier" },
 		css = { "prettier" },
+		latex = { "latexindent" },
 
 		["*"] = { "codespell" },
 		["_"] = { "trim_whitespace", "trim_newlines" },

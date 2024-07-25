@@ -13,7 +13,7 @@ require("lint").linters_by_ft = {
 	json = { "jsonlint" },
 	yaml = { "yamllint" },
 	-- markdown = { "vale" },
-	html = { "vale" },
+	-- html = { "vale" },
 }
 
 vim.api.nvim_create_autocmd(

@@ -6,7 +6,15 @@ lspconfig.rust_analyzer.setup({ capabilities = capabilities })
 lspconfig.gopls.setup({ capabilities = capabilities })
 lspconfig.ruff_lsp.setup({ capabilities = capabilities })
 lspconfig.clangd.setup({ capabilities = capabilities })
-lspconfig.tsserver.setup({ capabilities = capabilities })
+lspconfig.texlab.setup({ capabilities = capabilities })
+-- lspconfig.omnisharp.setup({ capabilities = capabilities,
+-- 	cmd = {
+-- 		"mono",
+-- 		"--assembly-loader=strict",
+-- 		"/opt/homebrew/opt/omnisharp-mono/libexec/Omnisharp.exe",
+-- 	},
+-- 	use_mono = true,
+-- })
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

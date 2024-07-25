@@ -24,6 +24,6 @@ rundi.setup({
 			compiler = "node",
 		},
 	},
-	silent = true,
+	silent = false,
 	keymap = "<C-c>",
 })
