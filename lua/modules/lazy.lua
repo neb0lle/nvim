@@ -59,7 +59,7 @@ require("lazy").setup({
 	"mfussenegger/nvim-lint",
 
 	-- dap
-	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 
 	-- completion
 	"hrsh7th/nvim-cmp",
